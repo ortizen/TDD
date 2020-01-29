@@ -52,17 +52,16 @@ void main() {
       verify(mockInputConverter.stringToUnsignedInteger(tNumberString));
     });
     test('should emit [Error] when input is invalid', () async {
+      //arrange
+      when(mockInputConverter.stringToUnsignedInteger(any))
+          .thenReturn(Left(InvalidInputFailure()));
       final expected = [
         Empty(),
         Error(message: INVALID_INPUT_FAILURE_MESSAGE),
       ];
-      //arrange
-      when(mockInputConverter.stringToUnsignedInteger(any))
-          .thenReturn(Left(InvalidInputFailure()));
       //act
-      expectLater(bloc.state, emitsInOrder(expected));
+      expectLater(bloc, emitsInOrder(expected));
       //assert
-
       bloc.add(GetTriviaForConcreteNumber(tNumberString));
     });
   });
