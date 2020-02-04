@@ -12,6 +12,7 @@ class GetTriviaForConcreteNumber extends NumberTriviaEvent {
 }
 
 class GetTriviaForRandomNumber extends NumberTriviaEvent {
+  GetTriviaForRandomNumber();
   @override
   List<Object> get props => const <dynamic>[];
 }
